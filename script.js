@@ -2,9 +2,7 @@ let state = {
     grid: _.map(_.range(0, 9), index => {
       return { index, figure: -1 };
     }),
-    myTurn: false };
-  
-  
+    myTurn: false }; 
   const appState = _.cloneDeep(state);
   
   const block = Vue.component('block', {
@@ -16,21 +14,15 @@ let state = {
       figure: {
         type: Number,
         default: -1 } },
-  
-  
-  
     computed: {
       fig() {
         return this.figure === 0 ? 'O' : 'X';
       } },
-  
-  
     data() {
       return {
         selected: false };
   
-    },
-  
+    },  
     methods: {
       enter(el, done) {
         TweenMax.from(el, 1, {
@@ -40,9 +32,6 @@ let state = {
           onComplete: done });
   
       } } });
-  
-  
-  
   const win = Vue.component('win', {
     name: 'win',
     template: '#win',
@@ -50,10 +39,6 @@ let state = {
       clickHandler: {
         type: Function,
         default: null } } });
-  
-  
-  
-  
   const app = new Vue({
     name: 'app',
   
@@ -65,8 +50,6 @@ let state = {
   
     components: {
       block },
-  
-  
     computed: {
       winner() {
         const wins = ['012', '036', '345', '147', '258', '678', '048', '246'];
@@ -87,7 +70,6 @@ let state = {
           return _.difference(combination, moves).length === 0;
         });
       } },
-  
   
     methods: {
       select(index) {
@@ -111,9 +93,7 @@ let state = {
           autoAlpha: 0,
           scale: 0,
           ease: Elastic.easeOut.config(1.25, 0.5) });
-  
       },
-  
       enterWin(el) {
         TweenMax.from(el, 1, {
           autoAlpha: 0,
